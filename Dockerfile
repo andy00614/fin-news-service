@@ -5,14 +5,14 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Copy requirements first to leverage Docker cache
-COPY deepseek_demo/requirements.txt .
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY deepseek_demo/ .
+COPY . .
 
 # Expose port 8000 for FastAPI
 EXPOSE 7777
 
 # Command to run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7777"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7777", "--reload"]
