@@ -4,7 +4,14 @@ from pydantic import BaseModel
 import uvicorn
 from typing import List, Dict, Any
 
-app = FastAPI(title="Stock Analysis API")
+app = FastAPI(
+    title="Stock Analysis API",
+    description="API for analyzing stock data using AI",
+    version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json"
+)
 
 # 初始化客户端
 client = Ark(
@@ -71,7 +78,12 @@ async def root():
     """
     API根路径
     """
-    return {"message": "Welcome to Stock Analysis API"}
+    return {
+        "status": "ok",
+        "message": "Stock Analysis API is running",
+        "docs_url": "/docs",
+        "redoc_url": "/redoc"
+    }
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=7777)
