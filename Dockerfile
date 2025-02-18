@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 7777
 
 # Command to run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7777", "--reload"]
+CMD ["uvicorn", "main:app", "--port", "7777", "--reload"]
